@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Szabadság Igénylés</title>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Szabadság Igénylés</h1>
+    
+    {{#if errors.date}}
+    <div class="alert alert-danger">{{errors.date}}</div>
+    {{/if}}
+
+    <form action="/leave" method="post">
+        <div class="form-group">
+            <label for="name">Név</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{data.name}}" required>
+        </div>
+        <div class="form-group">
+            <label for="startDate">Kezdő Dátum</label>
+            <input type="date" class="form-control" id="startDate" name="startDate" value="{{data.startDate}}" required>
+        </div>
+        <div class="form-group">
+            <label for="endDate">Vég Dátum</label>
+            <input type="date" class="form-control" id="endDate" name="endDate" value="{{data.endDate}}" required>
+        </div>
+        <div class="form-group">
+            <label for="paidLeave">Fizetett Szabadság</label>
+            <input type="checkbox" id="paidLeave" name="paidLeave">
+        </div>
+        <div class="form-group">
+            <label for="employeeId">Alkalmazott Azonosító (BBB-SSS)</label>
+            <input type="text" class="form-control" id="employeeId" name="employeeId" value="{{data.employeeId}}" required>
+        </div>
+        <div class="form-group">
+            <label for="reason">Indoklás</label>
+            <textarea class="form-control" id="reason" name="reason" rows="4" required>{{data.reason}}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Küldés</button>
+    </form>
+</div>
+</body>
+</html>
